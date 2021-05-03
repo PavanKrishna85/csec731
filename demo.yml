@@ -1,0 +1,19 @@
+---
+
+- name: sample
+  hosts: Linux
+  remote_user: pavan
+  tasks:
+    - name: docker
+      shell: 'apt install docker -y'
+      become: yes
+      register: op
+
+    - name: docker.io
+      shell: 'apt install docker.io'
+      become: yes
+      register: op1
+
+    - debug: var=op.stdout_lines
+    - debug: var=op1.stdout_lines
+
